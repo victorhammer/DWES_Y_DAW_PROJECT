@@ -11,7 +11,8 @@ const request = await fetch('usuario/234',{
 
     let listadoHTML = '';
     for (let usuario of usuarios) {
-        let usuarioHTML = '<tr><th>'+ usuario.id +'</th><th>'+ usuario.nombre +''+ usuario.apellido + '</th><th>' + usuario.email + '</th><th>'+ usuario.telefono + '</th><th><a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></th></tr>'
+        let botonEliminar = '<a href="#" onclick="eliminarUsuario('+ usuario.id +')" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>'
+        let usuarioHTML = '<tr><th>'+ usuario.id +'</th><th>'+ usuario.nombre +''+ usuario.apellido + '</th><th>' + usuario.email + '</th><th>'+ usuario.telefono + '</th><th>'+ botonEliminar +'</th></tr>'
         listadoHTML += usuarioHTML;
     }
 
@@ -21,4 +22,7 @@ const request = await fetch('usuario/234',{
     console.log(usuarios);
     document.querySelector('#usuarios tbody').outerHTML = listadoHTML;
 
+    function eliminarUsuario(id){
+        alert(id);
+    }
 }

@@ -1,8 +1,11 @@
 package com.s2daw.demo.controllers;
 
+import dao.UsuarioDao;
 import models.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -10,6 +13,9 @@ import java.util.List;
 
 @RestController
 public class UsuarioController {
+
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     @RequestMapping(value="usuario/{id}")
     public Usuario getUsuario(@PathVariable Long id){
@@ -24,33 +30,7 @@ public class UsuarioController {
 
     @RequestMapping(value="usuario")
     public List<Usuario> getUsuario(){
-        List<Usuario> usuarios = new ArrayList<>();
-        Usuario usuario = new Usuario();
-        usuario.setId(1L);
-        usuario.setNombre("Víctor");
-        usuario.setApellidos("Alonso");
-        usuario.setEmail("alumno.53998@ies-azarquiel.es");
-        usuario.setTelefono("648702241");
-
-        Usuario usuario2 = new Usuario();
-        usuario.setId(2L);
-        usuario.setNombre("Juliano");
-        usuario.setApellidos("Martin");
-        usuario.setEmail("alumno.12345@ies-azarquiel.es");
-        usuario.setTelefono("612302241");
-
-        Usuario usuario3 = new Usuario();
-        usuario.setId(3L);
-        usuario.setNombre("Espinaca");
-        usuario.setApellidos("Molina");
-        usuario.setEmail("alumno.56732@ies-azarquiel.es");
-        usuario.setTelefono("612302987");
-
-        usuarios.add(usuario);
-        usuarios.add(usuario2);
-        usuarios.add(usuario3);
-
-        return usuarios;
+        return usuarioDao.getUsuarios();
     }
 
     @RequestMapping(value="usuario45")
@@ -63,14 +43,9 @@ public class UsuarioController {
         return usuario;
     }
 
-    @RequestMapping(value="usuario343")
-    public Usuario eliminar(){
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Víctor");
-        usuario.setApellidos("Alonso");
-        usuario.setEmail("alumno.53998@ies-azarquiel.es");
-        usuario.setTelefono("648702241");
-        return usuario;
+    @RequestMapping(value= "api/usuario/{id}", method = RequestMethod.DELETE)
+    public void eliminar(PathVariable Long id){
+        UsuarioDao.eliminar(id);
     }
 
     @RequestMapping(value="usuario123")

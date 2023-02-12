@@ -1,59 +1,43 @@
 package models;
 
+import lombock.EqualsAndHashCode;
+import lombock.Getter;
+import lombock.Setter;
+import lombock.ToString;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuarios")
+@ToString @EqualsAndHashCode
 public class Usuario {
-    Long id;
-    String nombre;
-    String apellidos;
-    String email;
-    String telefono;
-    String password;
 
-    public Long getId() {
-        return id;
-    }
+    @Id
+    @Getter @Setter @Column(name = "id")
+    private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Id
+    @Getter @Setter @Column(name = "nombre")
+    private String nombre;
 
-    public String getNombre() {
-        return nombre;
-    }
+    @Id
+    @Getter @Setter @Column(name = "apellidos")
+    private String apellidos;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    @Id
+    @Getter @Setter @Column(name = "email")
+    private String email;
 
-    public String getApellidos() {
-        return apellidos;
-    }
+    @Id
+    @Getter @Setter @Column(name = "telefono")
+    private String telefono;
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
+    @Id
+    @Getter @Setter @Column(name = "password")
+    private String password;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
 }
