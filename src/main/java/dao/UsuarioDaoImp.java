@@ -1,6 +1,6 @@
 package dao;
 
-import com.s2daw.demo.models.Usuario;
+
 import models.Usuario;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

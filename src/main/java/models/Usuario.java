@@ -1,14 +1,15 @@
 package models;
 
-import lombock.EqualsAndHashCode;
-import lombock.Getter;
-import lombock.Setter;
-import lombock.ToString;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "usuarios")

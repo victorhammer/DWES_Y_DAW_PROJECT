@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 public class UsuarioController {
@@ -29,7 +29,7 @@ public class UsuarioController {
     }
 
     @RequestMapping(value="usuario")
-    public List<Usuario> getUsuario(){
+    public List<Usuario> getUsuarios(){
         return usuarioDao.getUsuarios();
     }
 
@@ -45,7 +45,7 @@ public class UsuarioController {
 
     @RequestMapping(value= "api/usuario/{id}", method = RequestMethod.DELETE)
     public void eliminar(PathVariable Long id){
-        UsuarioDao.eliminar(id);
+        usuarioDao.eliminar(id);
     }
 
     @RequestMapping(value="usuario123")
