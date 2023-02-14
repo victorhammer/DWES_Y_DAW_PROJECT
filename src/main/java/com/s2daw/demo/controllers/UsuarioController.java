@@ -16,8 +16,7 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioDao usuarioDao;
-
-    @RequestMapping(value="usuario/{id}")
+    @RequestMapping(value="api/usuarios/{id}",method= RequestMethod.GET)
     public Usuario getUsuario(@PathVariable Long id){
         Usuario usuario = new Usuario();
         usuario.setId(id);
@@ -28,33 +27,14 @@ public class UsuarioController {
         return usuario;
     }
 
-    @RequestMapping(value="usuario")
+    @RequestMapping(value="api/usuarios",method= RequestMethod.GET)
     public List<Usuario> getUsuarios(){
         return usuarioDao.getUsuarios();
     }
 
-    @RequestMapping(value="usuario45")
-    public Usuario editar(){
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Víctor");
-        usuario.setApellidos("Alonso");
-        usuario.setEmail("alumno.53998@ies-azarquiel.es");
-        usuario.setTelefono("648702241");
-        return usuario;
-    }
-
     @RequestMapping(value= "api/usuario/{id}", method = RequestMethod.DELETE)
-    public void eliminar(PathVariable Long id){
+    public void eliminar(@PathVariable Long id){
         usuarioDao.eliminar(id);
     }
 
-    @RequestMapping(value="usuario123")
-    public Usuario buscar(){
-        Usuario usuario = new Usuario();
-        usuario.setNombre("Víctor");
-        usuario.setApellidos("Alonso");
-        usuario.setEmail("alumno.53998@ies-azarquiel.es");
-        usuario.setTelefono("648702241");
-        return usuario;
-    }
 }
